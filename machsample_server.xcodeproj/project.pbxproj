@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A2BAE0481D0BACF600F2B35F /* simple_ipc_server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2BAE0471D0BACF600F2B35F /* simple_ipc_server.cpp */; };
+		A245846C1D0BB162001C44DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A245846B1D0BB162001C44DB /* Foundation.framework */; };
+		A2BAE0481D0BACF600F2B35F /* simple_ipc_server.mm in Sources */ = {isa = PBXBuildFile; fileRef = A2BAE0471D0BACF600F2B35F /* simple_ipc_server.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,9 +24,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A245846B1D0BB162001C44DB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A256AA9A1D0B9C160018B5DC /* machsample_server */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = machsample_server; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2BAE0461D0BACF600F2B35F /* simple_ipc_common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simple_ipc_common.h; sourceTree = SOURCE_ROOT; };
-		A2BAE0471D0BACF600F2B35F /* simple_ipc_server.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = simple_ipc_server.cpp; sourceTree = SOURCE_ROOT; };
+		A2BAE0471D0BACF600F2B35F /* simple_ipc_server.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = simple_ipc_server.mm; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A245846C1D0BB162001C44DB /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +45,7 @@
 		A256AA911D0B9C160018B5DC = {
 			isa = PBXGroup;
 			children = (
+				A245846B1D0BB162001C44DB /* Foundation.framework */,
 				A256AA9C1D0B9C160018B5DC /* machsample_server */,
 				A256AA9B1D0B9C160018B5DC /* Products */,
 			);
@@ -59,7 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				A2BAE0461D0BACF600F2B35F /* simple_ipc_common.h */,
-				A2BAE0471D0BACF600F2B35F /* simple_ipc_server.cpp */,
+				A2BAE0471D0BACF600F2B35F /* simple_ipc_server.mm */,
 			);
 			path = machsample_server;
 			sourceTree = "<group>";
@@ -120,7 +124,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A2BAE0481D0BACF600F2B35F /* simple_ipc_server.cpp in Sources */,
+				A2BAE0481D0BACF600F2B35F /* simple_ipc_server.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
