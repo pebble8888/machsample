@@ -18,12 +18,14 @@
 
 typedef struct {
     mach_msg_header_t header;
-    int               data;
+    int32_t sendval;
+    int32_t sendbuf[512];
 } msg_format_send_t;
 
 typedef struct {
     mach_msg_header_t  header;
-    int                data;
+    int32_t recvval;
+    int32_t recvbuf[512];
     mach_msg_trailer_t trailer; 
 } msg_format_recv_t;
 

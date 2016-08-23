@@ -6,6 +6,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <thread>
 #include "simple_ipc_common.h"
 
 int factorial(int n)
@@ -19,8 +21,9 @@ int factorial(int n)
 int main(int argc, char **argv)
 {
     kern_return_t kr;
-    msg_format_recv_t recv_msg;
-    msg_format_send_t send_msg;
+    // 受信メッセージフォーマット
+    msg_format_recv_t* recv_msg = new msg_format_recv_t;
+    msg_format_send_t* send_msg = new msg_format_send_t;
     mach_msg_header_t *recv_hdr, *send_hdr;
     mach_port_t       server_port; // メッセージのローカルパート
     
@@ -34,9 +37,9 @@ int main(int argc, char **argv)
     
     for (;;){
         // receive message
-        recv_hdr = &(recv_msg.header);
+        recv_hdr = &(recv_msg->header);
         recv_hdr->msgh_local_port = server_port;
-        recv_hdr->msgh_size = sizeof(recv_msg);
+        recv_hdr->msgh_size = sizeof(msg_format_recv_t);
         kr = mach_msg(recv_hdr,
                       MACH_RCV_MSG,
                       0,
@@ -46,18 +49,23 @@ int main(int argc, char **argv)
                       MACH_PORT_NULL);
         EXIT_ON_MACH_ERROR("mach_msg(recv)", kr, MACH_MSG_SUCCESS);
         
+        /*
         printf("recv data = %d, id = %d, local_port = %d, remote_port = %d\n",
-               recv_msg.data, recv_hdr->msgh_id,
-               recv_hdr->msgh_local_port, recv_hdr->msgh_remote_port);
+               recv_msg.data,
+               recv_hdr->msgh_id,
+               recv_hdr->msgh_local_port,
+               recv_hdr->msgh_remote_port);
+         */
         
         // process message and prepare reply
-        send_hdr = &(send_msg.header);
+        send_hdr = &(send_msg->header);
         send_hdr->msgh_bits = MACH_MSGH_BITS_LOCAL(recv_hdr->msgh_bits);
-        send_hdr->msgh_size = sizeof(send_msg);
+        send_hdr->msgh_size = sizeof(msg_format_send_t);
         send_hdr->msgh_local_port = MACH_PORT_NULL;
         send_hdr->msgh_remote_port = recv_hdr->msgh_remote_port;
         send_hdr->msgh_id = recv_hdr->msgh_id;
-        send_msg.data = factorial(recv_msg.data);
+        send_msg->sendval = factorial(recv_msg->recvval);
+        memcpy(send_msg->sendbuf, recv_msg->recvbuf, 512 * sizeof(int32_t));
         
         // send message
         kr = mach_msg(send_hdr,
@@ -69,8 +77,13 @@ int main(int argc, char **argv)
                       MACH_PORT_NULL);
         EXIT_ON_MACH_ERROR("mach_msg(send)", kr, MACH_MSG_SUCCESS);
         
-        printf("reply sent\n");
+        //printf("reply sent\n");
+        
+        std::this_thread::yield();
     }
+    
+    delete recv_msg;
+    delete send_msg;
     
     exit(0);
 }

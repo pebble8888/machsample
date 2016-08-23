@@ -8,7 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		A2BAE0451D0BACE200F2B35F /* simple_ipc_client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2BAE0431D0BACE200F2B35F /* simple_ipc_client.cpp */; };
+		A2F6EC0B1D6C7E1000FC6893 /* libcpp11lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A2F6EC081D6C7DE500FC6893 /* libcpp11lib.a */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A2F6EC071D6C7DE500FC6893 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A2F6EC021D6C7DE500FC6893 /* cpp11lib.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A26095381D4E1562006B2F85;
+			remoteInfo = cpp11lib;
+		};
+		A2F6EC091D6C7DE500FC6893 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A2F6EC021D6C7DE500FC6893 /* cpp11lib.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A2D77DEA1B99BB9600CFA432;
+			remoteInfo = cpp11libtest;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		A256AAAE1D0B9C490018B5DC /* CopyFiles */ = {
@@ -26,6 +44,8 @@
 		A256AAB01D0B9C490018B5DC /* machsample_client */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = machsample_client; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2BAE0431D0BACE200F2B35F /* simple_ipc_client.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = simple_ipc_client.cpp; sourceTree = SOURCE_ROOT; };
 		A2BAE0441D0BACE200F2B35F /* simple_ipc_common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simple_ipc_common.h; sourceTree = SOURCE_ROOT; };
+		A2F6EC021D6C7DE500FC6893 /* cpp11lib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cpp11lib.xcodeproj; path = cpp11lib/cpp11lib/cpp11lib.xcodeproj; sourceTree = "<group>"; };
+		A2F6EC0E1D6C7E7500FC6893 /* StopWatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StopWatch.h; path = cpp11lib/cpp11lib/cpp11lib/lib/StopWatch.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2F6EC0B1D6C7E1000FC6893 /* libcpp11lib.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +63,7 @@
 		A256AAA71D0B9C490018B5DC = {
 			isa = PBXGroup;
 			children = (
+				A2F6EC021D6C7DE500FC6893 /* cpp11lib.xcodeproj */,
 				A256AAB21D0B9C490018B5DC /* machsample_client */,
 				A256AAB11D0B9C490018B5DC /* Products */,
 			);
@@ -60,8 +82,18 @@
 			children = (
 				A2BAE0431D0BACE200F2B35F /* simple_ipc_client.cpp */,
 				A2BAE0441D0BACE200F2B35F /* simple_ipc_common.h */,
+				A2F6EC0E1D6C7E7500FC6893 /* StopWatch.h */,
 			);
 			path = machsample_client;
+			sourceTree = "<group>";
+		};
+		A2F6EC031D6C7DE500FC6893 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A2F6EC081D6C7DE500FC6893 /* libcpp11lib.a */,
+				A2F6EC0A1D6C7DE500FC6893 /* cpp11libtest.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -108,12 +140,35 @@
 			mainGroup = A256AAA71D0B9C490018B5DC;
 			productRefGroup = A256AAB11D0B9C490018B5DC /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = A2F6EC031D6C7DE500FC6893 /* Products */;
+					ProjectRef = A2F6EC021D6C7DE500FC6893 /* cpp11lib.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				A256AAAF1D0B9C490018B5DC /* machsample_client */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		A2F6EC081D6C7DE500FC6893 /* libcpp11lib.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libcpp11lib.a;
+			remoteRef = A2F6EC071D6C7DE500FC6893 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A2F6EC0A1D6C7DE500FC6893 /* cpp11libtest.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = cpp11libtest.xctest;
+			remoteRef = A2F6EC091D6C7DE500FC6893 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A256AAAC1D0B9C490018B5DC /* Sources */ = {
